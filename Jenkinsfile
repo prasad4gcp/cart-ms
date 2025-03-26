@@ -7,9 +7,7 @@ pipeline{
     stages{
         stage ('Build'){
             agent{
-                node{
                     label 'java-slave'
-                }
             }
             echo "***********This is Build stage************"
         }
