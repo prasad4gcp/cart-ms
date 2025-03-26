@@ -1,18 +1,30 @@
 pipeline{
-    agent any
-    tools
-    {
-        maven "MAVEN-3.9"
+    agent{
+        label 'java-slave'
+    }
+    tools{
+        maven 'MAVEN-3.9'
     }
     stages{
         stage ('Build'){
-            agent{
-                label 'java-slave'
-            }
             steps{
-             echo "***********This is Build stage************"
+                  echo "*******Build***********"
             }
-           
+        }
+        stage ('Code Quality'){
+            steps{
+                  echo "*******Code quality***********"
+            }
+        }
+        stage ('Docker Build'){
+            steps{
+                  echo "*******Docker Build***********"
+            }
+        }
+        stage ('Deploy'){
+           steps{
+                  echo "*******Deployed***********"
+            }
         }
     }
 }
